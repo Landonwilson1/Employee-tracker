@@ -3,7 +3,9 @@
   ![screenshot of application](Screenshot.png)
 
   ## Desciption 
-  Employee Tracker is a command-line application. The application uses SQL and Inquirer to keep track of employees. The user will be able to view departments, roles, employees as well as add a department, role, and employee. Walkthrough video is listed below. 
+  Employee Tracker is a command-line application. The application uses SQL and Inquirer to help companies build an employee database. This application will allow a manager to view or create departments, roles, employees.
+  
+  Walkthrough video is listed below. 
 
 [Walkthrough video](https://drive.google.com/file/d/1XmzIOpog3cIfv93owMaqfj0eeEY74iCE/view?usp=sharing)
 
@@ -13,7 +15,7 @@
   - [Questions](#questions) 
 
   ## Installation 
-  Please npm i
+  To run the application run an npm install. After installing dependencies, run node index.js in your terminal to start the prompts that will guide you through the application.
 
   ## Usage 
   node index.js
