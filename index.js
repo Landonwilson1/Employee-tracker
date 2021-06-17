@@ -36,31 +36,33 @@ function firstPrompt() {
         "Add a department",
         "Add a role",
         "Add an employee",
+        "Update an employee",
         "Exit"
         ],
     },
     ])
     .then((response) => {
     if (response.selection === "View all departments") {
-        return viewDepartments();
+        return departments();
     } else if (response.selection === "View all roles") {
-        return viewRoles();
+        return roles();
     } else if (response.selection === "View all employees") {
-        return viewEmployees();
+        return employees();
     } else if (response.selection === "Add a department") {
         return addDepartment();
     } else if (response.selection === "Add a role") {
         return addRole();
     } else if (response.selection === "Add an employee") {
         return addEmployee();
+    } else if (response.selection === "Update an employee") {
+        return updateEmployee();
     } else {
         return exit();
     }
     });
 };
 
-
-function viewDepartments() {
+function departments() {
     const sql = `SELECT * FROM department`;
 
     db.query(sql, (err, row) => {
@@ -73,10 +75,10 @@ function viewDepartments() {
     });
 };
 
-function viewRoles() {
+function roles() {
     const sql = `SELECT role.id, role.title, department.department_name, role.salary
-                FROM role
-                LEFT JOIN department ON role.department_id = department.id;`;
+                    FROM role
+                    LEFT JOIN department ON role.department_id = department.id;`;
 
     db.query(sql, (err, row) => {
         if (err) {
@@ -88,11 +90,11 @@ function viewRoles() {
     });
 };
 
-function viewEmployees() {
+function employees() {
     const sql = `SELECT employee.id,  employee.first_name, employee.last_name, role.title, role.salary, department.department_name
-                FROM employee
-                LEFT JOIN role ON employee.role_id = role.id
-                LEFT JOIN department ON role.department_id = department.id;`;
+                    FROM employee
+                    LEFT JOIN role ON employee.role_id = role.id
+                    LEFT JOIN department ON role.department_id = department.id;`;
     db.query(sql, (err, row) => {
         if (err) {
             console.log("No departments found.");
@@ -117,7 +119,7 @@ function addDepartment() {
                     VALUES (?);`;
         const newDepartment = [data.name];
         db.query(sql, newDepartment, (err, result) => {
-            viewDepartments();
+            departments();
         });
     });
 };
@@ -157,7 +159,7 @@ function addRole() {
                     VALUES (?,?,?);`;
         const newRole = [data.name, data.salary, department];
         db.query(sql, newRole, (err, result) => {
-            viewRoles();
+            roles();
         });
     });
 };
@@ -208,16 +210,16 @@ function addEmployee()  {
             department = 7;
         }
         const sql = `INSERT INTO employee (first_name, last_name, role_id, manager_id)
-                    VALUES (?,?,?, ?);`;
+                        VALUES (?,?,?, ?);`;
         const newEmployee = [data.first, data.last, role, 1];
         db.query(sql, newEmployee, (err, result) => {
-            viewEmployees();
+            employees();
         });
     });
 };
 
 function exit() {
-    console.log("See ya!");
+    console.log("GoodBye!");
 }
 
 firstPrompt(); 
