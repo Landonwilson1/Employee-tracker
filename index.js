@@ -2,7 +2,7 @@ const db = require("./db/connection");
 const inquirer = require("inquirer");
 
 require("console.table");
-/*
+
 console.log(`
 ║     _____                 _                         ║
 ║    | ____|_ __ ___  _ __ | | ___  _   _  ___  ___   ║
@@ -20,7 +20,6 @@ console.log(`
 ║                                                     ║
 \╚═════════════════════════════════════════════════════╝
 `);
-*/
 
 function firstPrompt() {
     return inquirer
