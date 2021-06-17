@@ -1,6 +1,6 @@
 # Employee Tracker
 
-  [screenshot.png]
+  ![screenshot of application](Screenshot.png)
 
   ## Desciption 
   Employee Tracker is a command-line application. The user will be able to view departments, roles, employees as well as add a department, role, and employee.
