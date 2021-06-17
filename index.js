@@ -217,6 +217,10 @@ function addEmployee()  {
     });
 };
 
+function updateEmployee() {
+    return(employees);
+}
+
 function exit() {
     console.log("GoodBye!");
 }
